@@ -1,0 +1,13 @@
+# Ignore object files, shared libraries, executables and vscode things
+*.o
+*.a
+*.so
+*.exe
+*.vscode/
+*.txt
+
+#Files
+
+#Folders
+exe/
+test/
