@@ -1,9 +1,18 @@
 #include "menu.hpp"
 
-Menu::Menu(const std::string& title) : title(title) {}
+Menu::Menu() : title(), Options() {} ;
 
-void Menu::addOption(const std::string& option) {
-    options.push_back(option);
+Menu& Menu::addTitle(const std::string& t){
+	title = t;
+	return *this;
+}
+
+Menu& Menu::addOption(std::string opt, std::function<void()> fnct) {
+	std::pair<std::string, std::function<void()>> p;
+	p.first = opt;
+	p.second = fnct;
+	Options.push_back(p);
+	return *this;
 }
 
 size_t Menu::getIndex() const {
@@ -15,44 +24,45 @@ void Menu::setcolor(int k) {
 }
 
 size_t Menu::size() const {
-    return options.vector::size();
+    return Options.vector::size();
 }
 
 void Menu::print() {
     system("cls");
+		std::cout<<" ====  " << title << "  ==== \n";
 		for (size_t i = 0; i < this->size(); ++i) {
-			if (i == this->getIndex())
+			if (i == getIndex())
 				setcolor(3);
 			else
 				setcolor(7);
-			std::cout << i << "." << options[i] << "\n";
+			std::cout << i << "." << Options[i].first << "\n";
 		}
 		setcolor(7);
 	}
 
 void Menu::run() {
-    this->print();
+    print();
 
-    		while (true) {
-			if (GetAsyncKeyState(VK_LSHIFT)) {
-				if(this->getIndex() == 0)
-                    this->menu_index = this->size() - 1;
-                else
-                    -- this->menu_index;
-				Sleep(200);
-				this->print();
-			}
-			if (GetAsyncKeyState(VK_RSHIFT)) {
-				if(this->getIndex() == this->size() - 1)
-                    this->menu_index = 0;
-                else
-                    ++ this->menu_index;
-				Sleep(200);
-				this->print();
-			}
-			if (GetAsyncKeyState(VK_CONTROL)) {
-				Sleep(200);
-				std::cout<<"HAHA!";
-			}
+	while (true) {
+		if (GetAsyncKeyState(VK_LSHIFT)) {
+			if(getIndex() == 0)
+				menu_index = this->size() - 1;
+			else
+				--menu_index;
+			Sleep(200);
+			this->print();
 		}
+		if (GetAsyncKeyState(VK_RSHIFT)) {
+			if(getIndex() == this->size() - 1)
+				menu_index = 0;
+			else
+				++menu_index;
+			Sleep(200);
+			this->print();
+		}
+		if (GetAsyncKeyState(VK_CONTROL)) {
+			Sleep(200);
+			Options[getIndex()].second();
+		}
+	}
 }

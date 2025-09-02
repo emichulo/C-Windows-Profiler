@@ -1,26 +1,14 @@
 #include "menu.hpp"
-
 #include <iostream>
 
+Menu menu;
 
-void sayHello() {
-    //TEST
-    std::cout << "Hello, User! 👋\n";
-}
-
-void showInfo() {
-    //TEST
-    std::cout << "This is a simple OOP-based terminal menu.\n";
+void init() {
+    menu.addTitle("Menu").addOption("Say Hello", []() {std::cout<<"Hello!";})
+    .addOption("Exit", []() {std::exit(0);});
 }
 
 int main() {
-    Menu menu("Main Menu");
-    menu.addOption("Say Hello");
-    menu.addOption("Show Info");
-    menu.addOption("EXIT!");
-
-    int choice;
+    init();
     menu.run();
-
-    return 0;
 }

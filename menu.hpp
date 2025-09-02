@@ -3,17 +3,22 @@
 
 #include <iostream>
 #include <vector>
+#include <functional>
 #include <windows.h>
 
 class Menu {
-    public:
+    private:
     std::string title;
+    std::vector<std::pair<std::string, std::function<void()>>> Options;
+
+    public:
     std::vector<std::string> options;
     size_t menu_index = 0;
 
-    Menu(const std::string& title);
+    Menu();
 
-    void addOption(const std::string& option);
+    Menu& addTitle(const std::string& t);
+    Menu& addOption(std::string opt, std::function<void()> fnct);
     size_t getIndex() const;
     void print();
     void run();
