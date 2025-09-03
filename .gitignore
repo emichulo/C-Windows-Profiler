@@ -7,7 +7,4 @@
 *.txt
 
 #Files
-
-#Folders
-exe/
-test/
+build/
