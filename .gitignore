@@ -4,7 +4,6 @@
 *.so
 *.exe
 *.vscode/
-*.txt
 
 #Files
 build/
