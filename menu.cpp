@@ -71,6 +71,7 @@ void Menu::run() {
     if (GetAsyncKeyState(VK_CONTROL)) {
       Sleep(200);
       Options[getIndex()].second();
+      Sleep(2000);
     }
   }
 }
