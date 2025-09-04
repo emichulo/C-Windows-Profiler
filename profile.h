@@ -4,16 +4,23 @@
 #include <iostream>
 #include <vector>
 
+#include <windows.h>
+
 class Profile {
- private:
+private:
   std::string name;
   std::vector<std::string> app_list;
 
- public:
+public:
+  static std::vector<Profile> prof_list;
+
   Profile();
-  Profile& addName(const std::string& n);
-  Profile& addApp(const std::string& v);
+  Profile &addName(const std::string &n);
+  Profile &addApps(const std::vector<std::string> &a);
   std::string getName();
+  void get_app_list();
   static void show_profilers(std::vector<Profile> v);
+  static void create_prof();
 };
-#endif  // PROFILE_H
+
+#endif // PROFILE_H
