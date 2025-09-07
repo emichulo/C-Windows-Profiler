@@ -19,7 +19,7 @@ public:
   Profile &addApps(const std::vector<std::string> &a);
   std::string getName();
   void get_app_list();
-  static void show_profilers(std::vector<Profile> v);
+  static void show_profilers();
   static void create_prof();
 };
 

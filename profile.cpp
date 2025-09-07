@@ -14,11 +14,11 @@ Profile &Profile::addApps(const std::vector<std::string> &a) {
   return (*this);
 }
 
-void Profile::show_profilers(std::vector<Profile> v) {
+void Profile::show_profilers() {
   system("cls");
-  for (int i = 0; i < v.size(); i++) {
-    std::cout << " ---" << i << ". " << v[i].getName();
-    v[i].get_app_list();
+  for (int i = 0; i < Profile::prof_list.size(); i++) {
+    std::cout << i << ". " << Profile::prof_list[i].getName();
+    Profile::prof_list[i].get_app_list();
   }
 }
 
