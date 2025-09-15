@@ -22,10 +22,21 @@ void Profile::show_profilers() {
   }
 }
 
+void Profile::run_profile() {
+  int prf;
+  system("cls");
+  for (int i = 0; i < Profile::prof_list.size(); i++) {
+    std::cout << i << ". " << Profile::prof_list[i].getName();
+    Profile::prof_list[i].get_app_list();
+  }
+  std::cout << "Choose a profile: ";
+  std::cin >> prf;
+}
+
 std::string Profile::getName() { return name; }
 
 void Profile::get_app_list() {
-  std::cout << "\n This profile will start the following apps: \n";
+  std::cout << "\nThis profile will start the following apps: \n";
   for (int i = 0; i < app_list.size(); i++)
     std::cout << app_list[i] << '\n';
 }

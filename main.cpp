@@ -9,7 +9,7 @@ void init() {
   menu.addTitle("Menu")
       .addOption("New Profile", []() { Profile::create_prof(); })
       .addOption("See Profiles", []() { Profile::show_profilers(); })
-      .addOption("Run a profile", []() { std::cout << "TO DO!"; })
+      .addOption("Run a profile", []() { Profile::run_profile(); })
       .addOption("Exit", []() { std::exit(0); });
 }
 

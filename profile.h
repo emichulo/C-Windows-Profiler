@@ -21,6 +21,7 @@ public:
   void get_app_list();
   static void show_profilers();
   static void create_prof();
+  static void run_profile();
 };
 
 #endif // PROFILE_H
